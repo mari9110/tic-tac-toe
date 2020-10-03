@@ -143,29 +143,17 @@ function random(gameField){
 function computerMove(gameField){
     let randomC = random(gameField);
     let randomR = random(gameField);
-    let flatArray = gameField.flat(2)
-    console.log(flatArray)
-    let word = ''
-    for (let i = index; i < flatArray.length; i+=gameField.length) {
-        if(flatArray[i]===EMPTY)
-            continue
-        word += flatArray[i]
-    }
-    if( word===ZERO.repeat(gameField.length-1) && gameField[i][randomC] === EMPTY){
-
-        break
-    }
-    if (gameField[randomR][randomC] === EMPTY)
-    {
-        gameField[randomR][randomC] = ZERO;
-        console.log(`Clicked on cell: ${randomR}, ${randomC}`);
-        clickCounter++;
-        renderSymbolInCell(ZERO, randomR, randomC);
-        console.log(gameField);
-    }
-    else{
-        computerMove(gameField)
-    }
+        if (gameField[randomR][randomC] === EMPTY)
+        {
+            gameField[randomR][randomC] = ZERO;
+            console.log(`Clicked on cell: ${randomR}, ${randomC}`);
+            clickCounter++;
+            renderSymbolInCell(ZERO, randomR, randomC);
+            console.log(gameField);
+        }
+        else{
+            computerMove(gameField)
+        }
 }
 
 function cellClickHandler (row, col) {
